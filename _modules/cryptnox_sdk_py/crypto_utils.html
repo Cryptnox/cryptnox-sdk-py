@@ -100,8 +100,8 @@
 <span class="sd">    :return: Encrypted data</span>
 <span class="sd">    :rtype: bytes</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># nosemgrep: python.cryptography.security.mode-without-authentication.crypto-mode-without-authentication</span>
     <span class="c1"># AES-CBC is required by the SCP03 smartcard protocol; authentication is handled via separate MAC</span>
+    <span class="c1"># nosemgrep: python.cryptography.security.mode-without-authentication.crypto-mode-without-authentication</span>
     <span class="n">cipher</span> <span class="o">=</span> <span class="n">Cipher</span><span class="p">(</span><span class="n">algorithms</span><span class="o">.</span><span class="n">AES</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">modes</span><span class="o">.</span><span class="n">CBC</span><span class="p">(</span><span class="n">initialization_vector</span><span class="p">),</span>
                     <span class="n">backend</span><span class="o">=</span><span class="n">default_backend</span><span class="p">())</span>
     <span class="n">encryptor</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">encryptor</span><span class="p">()</span>
@@ -124,8 +124,8 @@
 <span class="sd">    :return: Decrypted data</span>
 <span class="sd">    :rtype: bytes</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># nosemgrep: python.cryptography.security.mode-without-authentication.crypto-mode-without-authentication</span>
     <span class="c1"># AES-CBC is required by the SCP03 smartcard protocol; authentication is handled via separate MAC</span>
+    <span class="c1"># nosemgrep: python.cryptography.security.mode-without-authentication.crypto-mode-without-authentication</span>
     <span class="n">cipher</span> <span class="o">=</span> <span class="n">Cipher</span><span class="p">(</span><span class="n">algorithms</span><span class="o">.</span><span class="n">AES</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">modes</span><span class="o">.</span><span class="n">CBC</span><span class="p">(</span><span class="n">initialization_vector</span><span class="p">),</span>
                     <span class="n">backend</span><span class="o">=</span><span class="n">default_backend</span><span class="p">())</span>
     <span class="n">decryptor</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">decryptor</span><span class="p">()</span>
