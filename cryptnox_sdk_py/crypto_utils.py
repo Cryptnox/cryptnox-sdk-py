@@ -18,8 +18,8 @@ def aes_encrypt(key: bytes, initialization_vector: bytes, data: bytes) -> bytes:
     :return: Encrypted data
     :rtype: bytes
     """
-    # nosemgrep: python.cryptography.security.mode-without-authentication.crypto-mode-without-authentication
     # AES-CBC is required by the SCP03 smartcard protocol; authentication is handled via separate MAC
+    # nosemgrep: python.cryptography.security.mode-without-authentication.crypto-mode-without-authentication
     cipher = Cipher(algorithms.AES(key), modes.CBC(initialization_vector),
                     backend=default_backend())
     encryptor = cipher.encryptor()
@@ -39,8 +39,8 @@ def aes_decrypt(key: bytes, initialization_vector: bytes, data: bytes) -> bytes:
     :return: Decrypted data
     :rtype: bytes
     """
-    # nosemgrep: python.cryptography.security.mode-without-authentication.crypto-mode-without-authentication
     # AES-CBC is required by the SCP03 smartcard protocol; authentication is handled via separate MAC
+    # nosemgrep: python.cryptography.security.mode-without-authentication.crypto-mode-without-authentication
     cipher = Cipher(algorithms.AES(key), modes.CBC(initialization_vector),
                     backend=default_backend())
     decryptor = cipher.decryptor()
