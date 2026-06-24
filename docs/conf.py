@@ -196,6 +196,11 @@ latex_elements = {
     'printindex': '',  # drop the general Index from the PDF (kept in HTML)
     'fncychap': '',  # no fancy chapter rules; titlesec styles chapters instead
     'preamble': r'''
+% pdflatex can't render colour emoji; drop the ones used in the docs
+\DeclareUnicodeCharacter{1F4B3}{}% credit card
+\DeclareUnicodeCharacter{1F4CA}{}% bar chart
+\DeclareUnicodeCharacter{1F4DA}{}% books
+\DeclareUnicodeCharacter{1F4C4}{}% page facing up
 % Left-align body text (ragged right instead of justified)
 \usepackage[document]{ragged2e}
 % Drop the "(continues on next page)" / "(continued from previous page)" labels (parens included) on code blocks
