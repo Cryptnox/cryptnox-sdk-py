@@ -1,9 +1,9 @@
 Cryptnox SDK Python Documentation
 ==================================
 
-Welcome to the Cryptnox SDK Python technical documentation.
-
 .. only:: html
+
+   Welcome to the Cryptnox SDK Python technical documentation.
 
    📄 `Download this documentation as PDF <cryptnox-sdk-py.pdf>`__
 
