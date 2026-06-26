@@ -10,6 +10,25 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath(".."))
 
+# Derive the navy PDF cover logo from the white HTML SVG at build time, so only the
+# SVG is a committed source asset (needs cairosvg + Pillow; skipped on HTML-only envs).
+try:
+    import io as _io
+    import cairosvg
+    from PIL import Image as _Image
+    _static = os.path.join(os.path.dirname(__file__), "_static")
+    with open(os.path.join(_static, "cryptnox-logo.svg"), encoding="utf-8") as _f:
+        _svg = _f.read()
+    _png = cairosvg.svg2png(
+        bytestring=_svg.replace('fill="white"', 'fill="#101f2e"').encode(),
+        output_width=1200, output_height=226,
+    )
+    _Image.open(_io.BytesIO(_png)).save(
+        os.path.join(_static, "cryptnox-logo-dark.png"), dpi=(400, 400)
+    )
+except ImportError:
+    pass  # cairosvg/Pillow absent (HTML-only build): keep the committed dark PNG if present
+
 project = 'cryptnox-sdk-py'
 copyright = '2026, Cryptnox SA'
 author = 'Cryptnox'
