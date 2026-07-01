@@ -38,7 +38,7 @@
           
           <a href="index.html" class="icon icon-home">
             cryptnox-sdk-py
-              <img src="_static/cryptnox-logo.svg" class="logo" alt="Logo"/>
+              <img src="_static/cryptnox-logo.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -97,6 +97,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#cryptnox_sdk_py.exceptions.DataValidationException"><code class="docutils literal notranslate"><span class="pre">DataValidationException</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cryptnox_sdk_py.exceptions.DerivationSelectionException"><code class="docutils literal notranslate"><span class="pre">DerivationSelectionException</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cryptnox_sdk_py.exceptions.KeySelectionException"><code class="docutils literal notranslate"><span class="pre">KeySelectionException</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cryptnox_sdk_py.exceptions.AppletVersionException"><code class="docutils literal notranslate"><span class="pre">AppletVersionException</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cryptnox_sdk_py.exceptions.EOSKeyError"><code class="docutils literal notranslate"><span class="pre">EOSKeyError</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cryptnox_sdk_py.exceptions.FirmwareException"><code class="docutils literal notranslate"><span class="pre">FirmwareException</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#cryptnox_sdk_py.exceptions.GenuineCheckException"><code class="docutils literal notranslate"><span class="pre">GenuineCheckException</span></code></a></li>
@@ -950,6 +951,11 @@ deleting the Connection object itself.</p>
 <span class="sig-name descname"><span class="pre">R1</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">16</span></span><a class="headerlink" href="#cryptnox_sdk_py.enums.KeyType.R1" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cryptnox_sdk_py.enums.KeyType.ED25519">
+<span class="sig-name descname"><span class="pre">ED25519</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">32</span></span><a class="headerlink" href="#cryptnox_sdk_py.enums.KeyType.ED25519" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -1110,6 +1116,13 @@ deleting the Connection object itself.</p>
 <span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cryptnox_sdk_py.exceptions.</span></span><span class="sig-name descname"><span class="pre">KeySelectionException</span></span><a class="reference internal" href="_modules/cryptnox_sdk_py/exceptions.html#KeySelectionException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cryptnox_sdk_py.exceptions.KeySelectionException" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#cryptnox_sdk_py.exceptions.CryptnoxException" title="cryptnox_sdk_py.exceptions.CryptnoxException"><code class="xref py py-class docutils literal notranslate"><span class="pre">CryptnoxException</span></code></a></p>
 <p>Not a valid key type selection</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="cryptnox_sdk_py.exceptions.AppletVersionException">
+<span class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">cryptnox_sdk_py.exceptions.</span></span><span class="sig-name descname"><span class="pre">AppletVersionException</span></span><a class="reference internal" href="_modules/cryptnox_sdk_py/exceptions.html#AppletVersionException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cryptnox_sdk_py.exceptions.AppletVersionException" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#cryptnox_sdk_py.exceptions.CryptnoxException" title="cryptnox_sdk_py.exceptions.CryptnoxException"><code class="xref py py-class docutils literal notranslate"><span class="pre">CryptnoxException</span></code></a></p>
+<p>The card applet version is too old for the requested operation.</p>
 </dd></dl>
 
 <dl class="py exception">
@@ -1655,6 +1668,11 @@ deleting the Connection object itself.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="cryptnox_sdk_py.KeyType.R1">
 <span class="sig-name descname"><span class="pre">R1</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">16</span></span><a class="headerlink" href="#cryptnox_sdk_py.KeyType.R1" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="cryptnox_sdk_py.KeyType.ED25519">
+<span class="sig-name descname"><span class="pre">ED25519</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">32</span></span><a class="headerlink" href="#cryptnox_sdk_py.KeyType.ED25519" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
