@@ -35,7 +35,7 @@
           
           <a href="../../../index.html" class="icon icon-home">
             cryptnox-sdk-py
-              <img src="../../../_static/cryptnox-logo.png" class="logo" alt="Logo"/>
+              <img src="../../../_static/cryptnox-logo.svg" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -250,23 +250,6 @@
         <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">02x</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cert</span><span class="p">])</span></div>
 
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">_require_ed25519_support</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key_type</span><span class="p">:</span> <span class="n">KeyType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Ensure the card applet is recent enough to perform Ed25519 (EdDSA)</span>
-<span class="sd">        operations. Ed25519 support was introduced in applet v2.0.</span>
-
-<span class="sd">        :param KeyType key_type: Key type requested for the operation</span>
-<span class="sd">        :raises AppletVersionException: If Ed25519 is requested on a pre-2.0 applet</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">key_type</span> <span class="o">!=</span> <span class="n">KeyType</span><span class="o">.</span><span class="n">ED25519</span><span class="p">:</span>
-            <span class="k">return</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">applet_version</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">applet_version</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">applet_version</span><span class="p">))</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">applet_version</span> <span class="k">else</span> <span class="s2">&quot;unknown&quot;</span>
-            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">AppletVersionException</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;Ed25519 (Solana) operations require applet v2.0 or later, &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;but the card reports v</span><span class="si">{</span><span class="n">version</span><span class="si">}</span><span class="s2">&quot;</span>
-            <span class="p">)</span>
-
 <div class="viewcode-block" id="BasicG1.get_public_key">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.card.html#cryptnox_sdk_py.card.basic_g1.BasicG1.get_public_key">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_public_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">derivation</span><span class="p">:</span> <span class="n">Derivation</span><span class="p">,</span> <span class="n">key_type</span><span class="p">:</span> <span class="n">KeyType</span> <span class="o">=</span> <span class="n">KeyType</span><span class="o">.</span><span class="n">K1</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
@@ -283,8 +266,6 @@
         <span class="n">key_type</span> <span class="o">=</span> <span class="n">KeyType</span><span class="p">(</span><span class="n">key_type</span><span class="p">)</span>
         <span class="n">derivation</span> <span class="o">=</span> <span class="n">Derivation</span><span class="p">(</span><span class="n">derivation</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_require_ed25519_support</span><span class="p">(</span><span class="n">key_type</span><span class="p">)</span>
-
         <span class="k">if</span> <span class="n">derivation</span> <span class="ow">in</span> <span class="p">(</span><span class="n">Derivation</span><span class="o">.</span><span class="n">PINLESS_PATH</span><span class="p">,</span>
                           <span class="n">Derivation</span><span class="o">.</span><span class="n">DERIVE_AND_MAKE_CURRENT</span><span class="p">):</span>
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DerivationSelectionException</span><span class="p">(</span><span class="s2">&quot;This operation doesn&#39;t support this derivation form&quot;</span><span class="p">)</span>
@@ -294,9 +275,7 @@
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">send_encrypted</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">binary_path</span><span class="p">)</span>
 
         <span class="n">result</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span> <span class="k">if</span> <span class="n">hexed</span> <span class="k">else</span> <span class="n">data</span>
-        <span class="c1"># Ed25519 keys are already a raw 32-byte value; compression only applies</span>
-        <span class="c1"># to the secp256k1/secp256r1 encoding, so never mangle an Ed25519 key.</span>
-        <span class="k">if</span> <span class="n">compressed</span> <span class="ow">and</span> <span class="n">key_type</span> <span class="o">!=</span> <span class="n">KeyType</span><span class="o">.</span><span class="n">ED25519</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">compressed</span><span class="p">:</span>
             <span class="n">result</span> <span class="o">=</span> <span class="n">encode_pubkey</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="s2">&quot;bin_compressed&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="n">result</span></div>
@@ -776,50 +755,22 @@
         <span class="n">derivation</span> <span class="o">=</span> <span class="n">Derivation</span><span class="p">(</span><span class="n">derivation</span><span class="p">)</span>
         <span class="n">key_type</span> <span class="o">=</span> <span class="n">KeyType</span><span class="p">(</span><span class="n">key_type</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_require_ed25519_support</span><span class="p">(</span><span class="n">key_type</span><span class="p">)</span>
-
         <span class="k">if</span> <span class="n">derivation</span> <span class="o">==</span> <span class="n">Derivation</span><span class="o">.</span><span class="n">DERIVE_AND_MAKE_CURRENT</span> <span class="ow">or</span> \
                 <span class="p">(</span><span class="n">derivation</span> <span class="o">==</span> <span class="n">Derivation</span><span class="o">.</span><span class="n">PINLESS_PATH</span> <span class="ow">and</span> <span class="n">key_type</span> <span class="o">==</span> <span class="n">KeyType</span><span class="o">.</span><span class="n">R1</span><span class="p">):</span>
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DerivationSelectionException</span><span class="p">(</span><span class="s2">&quot;This operation doesn&#39;t support this derivation form&quot;</span><span class="p">)</span>
 
-        <span class="c1"># P2 selects the signing scheme: 0x03 = EdDSA (Ed25519), otherwise the</span>
-        <span class="c1"># EOS filter flag (0x01) or the default ECDSA path (0x00).</span>
-        <span class="k">if</span> <span class="n">key_type</span> <span class="o">==</span> <span class="n">KeyType</span><span class="o">.</span><span class="n">ED25519</span><span class="p">:</span>
-            <span class="n">p2</span> <span class="o">=</span> <span class="mh">0x03</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">p2</span> <span class="o">=</span> <span class="mh">0x01</span> <span class="k">if</span> <span class="n">filter_eos</span> <span class="k">else</span> <span class="mh">0x00</span>
-        <span class="n">signal</span> <span class="o">=</span> <span class="p">[</span><span class="mh">0x80</span><span class="p">,</span> <span class="mh">0xC0</span><span class="p">,</span> <span class="n">derivation</span> <span class="o">+</span> <span class="n">key_type</span><span class="p">,</span> <span class="n">p2</span><span class="p">]</span>
+        <span class="n">signal</span> <span class="o">=</span> <span class="p">[</span><span class="mh">0x80</span><span class="p">,</span> <span class="mh">0xC0</span><span class="p">,</span> <span class="n">derivation</span> <span class="o">+</span> <span class="n">key_type</span><span class="p">,</span> <span class="mh">0x01</span> <span class="k">if</span> <span class="n">filter_eos</span> <span class="k">else</span> <span class="mh">0x00</span><span class="p">]</span>
 
         <span class="n">derivation_base</span> <span class="o">=</span> <span class="p">(</span><span class="n">derivation</span> <span class="o">+</span> <span class="n">key_type</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x0F</span>
-        <span class="n">include_path</span> <span class="o">=</span> <span class="n">derivation_base</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">derivation_base</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">data</span> <span class="o">+=</span> <span class="n">path_to_bytes</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">key_type</span> <span class="o">==</span> <span class="n">KeyType</span><span class="o">.</span><span class="n">ED25519</span><span class="p">:</span>
-            <span class="c1"># EdDSA data field (docs.cryptnox.com v2.0, SIGN command):</span>
-            <span class="c1">#   [2-byte big-endian message length][raw message][path?][PIN]</span>
-            <span class="c1"># Ed25519 is pure - the card hashes the raw message internally - so the</span>
-            <span class="c1"># length prefix is what delimits the variable-length message from the</span>
-            <span class="c1"># trailing path/PIN. The PIN is a fixed 9-byte field right-padded with</span>
-            <span class="c1"># 0x00, and is omitted when user-key auth was already performed.</span>
-            <span class="n">payload</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;big&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">data</span>
-            <span class="k">if</span> <span class="n">include_path</span><span class="p">:</span>
-                <span class="n">payload</span> <span class="o">+=</span> <span class="n">path_to_bytes</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">pin</span><span class="p">:</span>
-                <span class="n">payload</span> <span class="o">+=</span> <span class="n">pin</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x00</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="n">payload</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">include_path</span><span class="p">:</span>
-                <span class="n">data</span> <span class="o">+=</span> <span class="n">path_to_bytes</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">pin</span><span class="p">:</span>
-                <span class="n">data</span> <span class="o">+=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">pin</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">+=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
 
         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">send_encrypted</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
-        <span class="c1"># Ed25519 returns a raw 64-byte R|S signature; k1/r1 return DER (0x30...).</span>
-        <span class="k">if</span> <span class="n">key_type</span> <span class="o">==</span> <span class="n">KeyType</span><span class="o">.</span><span class="n">ED25519</span><span class="p">:</span>
-            <span class="n">valid</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">==</span> <span class="mi">64</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">valid</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="ow">and</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mh">0x30</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">valid</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">result</span> <span class="ow">or</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mh">0x30</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">auth_type</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">AuthType</span><span class="o">.</span><span class="n">NO_AUTH</span>
             <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DataException</span><span class="p">(</span><span class="s2">&quot;Invalid data received during signature&quot;</span><span class="p">)</span>
 
