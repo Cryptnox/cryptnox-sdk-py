@@ -41,7 +41,7 @@ jobs:
           grep -v "pyscard" dev-requirements.txt > docs-requirements.txt
           python -m pip install -r docs-requirements.txt
           # Explicitly ensure sphinx, theme, and graphviz bindings are installed
-          python -m pip install sphinx sphinx-rtd-theme graphviz
+          python -m pip install sphinx sphinx-rtd-theme graphviz cairosvg pillow
           echo "Installation check:"
           python -m pip list | grep -i sphinx
 
@@ -60,6 +60,20 @@ jobs:
           echo "Documentation built successfully!"
           echo "Generated diagram files:"
           ls -la _build/html/_images/*.svg || echo "No SVG files found"
+
+      # 6b. Install LaTeX and build the PDF (Yubico-style, pdflatex)
+      - name: Install LaTeX for PDF
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            latexmk texlive-latex-recommended texlive-latex-extra \
+            texlive-fonts-recommended tex-gyre
+
+      - name: Build PDF (pdflatex)
+        run: |
+          cd docs
+          sphinx-build -M latexpdf . _build
+          cp _build/latex/cryptnox-sdk-py.pdf _build/html/cryptnox-sdk-py.pdf
 
       # 7. Deploy HTML documentation to GitHub Pages
       - name: Deploy to GitHub Pages
