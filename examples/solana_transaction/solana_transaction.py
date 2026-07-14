@@ -37,10 +37,11 @@ try:
     from solders.system_program import TransferParams, transfer
     from solders.transaction import Transaction
     SOLANA_AVAILABLE = True
+    SOLANA_IMPORT_WARNING: Optional[str] = None
 except ImportError:
     SOLANA_AVAILABLE = False
-    print("Warning: solders/base58 not installed. Install with: "
-          "pip install solders base58 requests")
+    SOLANA_IMPORT_WARNING = ("Warning: solders/base58 not installed. Install with: "
+                             "pip install solders base58 requests")
 
 # Cryptnox SDK
 try:
@@ -48,9 +49,11 @@ try:
     from cryptnox_sdk_py import exceptions
     from cryptnox_sdk_py.enums import Derivation, KeyType
     CRYPTNOX_AVAILABLE = True
+    CRYPTNOX_IMPORT_WARNING: Optional[str] = None
 except ImportError:
     CRYPTNOX_AVAILABLE = False
-    print("Warning: cryptnox-sdk-py not installed. Install with: pip install cryptnox-sdk-py")
+    CRYPTNOX_IMPORT_WARNING = ("Warning: cryptnox-sdk-py not installed. "
+                               "Install with: pip install cryptnox-sdk-py")
 
 
 # =============================================================================
