@@ -326,23 +326,23 @@ def run_solana_transaction_example(
             "tx_signature": tx_signature,
         }
 
-    except exceptions.AppletVersionException as e:
+    except cryptnox_sdk_py.exceptions.AppletVersionException as e:
         print(f"\n✗ Error: {e}")
         print("  ! Solana signing requires a Cryptnox card with applet v2.0 or later.")
         return None
-    except exceptions.ReaderException:
+    except cryptnox_sdk_py.exceptions.ReaderException:
         print("\n✗ Error: Card reader not found")
         return None
-    except exceptions.CardException as e:
+    except cryptnox_sdk_py.exceptions.CardException as e:
         print(f"\n✗ Error: Card error - {e}")
         return None
-    except exceptions.PinException:
+    except cryptnox_sdk_py.exceptions.PinException:
         print("\n✗ Error: Invalid PIN code")
         return None
-    except exceptions.SeedException:
+    except cryptnox_sdk_py.exceptions.SeedException:
         print("\n✗ Error: No seed on card. Please load a seed first.")
         return None
-    except exceptions.CryptnoxException as e:
+    except cryptnox_sdk_py.exceptions.CryptnoxException as e:
         print(f"\n✗ Error: {e}")
         return None
     except (ValueError, TypeError, RuntimeError, ImportError, requests.RequestException) as e:
