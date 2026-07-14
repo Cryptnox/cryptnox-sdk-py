@@ -46,7 +46,6 @@ except ImportError:
 # Cryptnox SDK
 try:
     import cryptnox_sdk_py
-    from cryptnox_sdk_py import exceptions
     from cryptnox_sdk_py.enums import Derivation, KeyType
     CRYPTNOX_AVAILABLE = True
     CRYPTNOX_IMPORT_WARNING: Optional[str] = None
