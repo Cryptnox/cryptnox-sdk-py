@@ -63,7 +63,10 @@ from cryptnox_sdk_py.enums import Derivation, KeyType
 
 connection = cryptnox_sdk_py.Connection(0)
 card = cryptnox_sdk_py.factory.get_card(connection)
-card.verify_pin("000000000")
+
+# Replace with your card's PIN (this is the factory default, for demo only)
+PIN = "000000000"
+card.verify_pin(PIN)
 
 # Derive to XRP path and get compressed public key
 card.derive(key_type=KeyType.K1, path="m/44'/144'/0'/0/0")

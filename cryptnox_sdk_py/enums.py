@@ -37,6 +37,7 @@ class KeyType(IntEnum):
     """
     K1 = 0x00
     R1 = 0x10
+    ED25519 = 0x20
 
 
 class Origin(Enum):

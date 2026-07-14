@@ -97,7 +97,6 @@ The SDK defines a custom exception hierarchy for different error scenarios:
       DataException;
       DataValidationException;
       DerivationSelectionException;
-      EOSKeyError;
       FirmwareException;
       GenericException;
       GenuineCheckException;
@@ -124,7 +123,6 @@ The SDK defines a custom exception hierarchy for different error scenarios:
       CryptnoxException -> DataException;
       CryptnoxException -> DataValidationException;
       CryptnoxException -> DerivationSelectionException;
-      CryptnoxException -> EOSKeyError;
       CryptnoxException -> FirmwareException;
       CryptnoxException -> GenericException;
       CryptnoxException -> GenuineCheckException;

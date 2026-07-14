@@ -11,7 +11,7 @@ from cryptography import x509
 from .card import (  # noqa: F401
     authenticity,
     Base,
-    BasicG1,  # Required to register with Base for _all_subclasses()
+    Basic,  # Required to register with Base for _all_subclasses()
     Nft,  # Required to register with Base for _all_subclasses()
 )
 # pylint: enable=unused-import

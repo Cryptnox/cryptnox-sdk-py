@@ -15,7 +15,7 @@ from ..enums import (
 )
 
 
-class Nft(basic_g1.BasicG1):
+class Nft(basic_g1.Basic):
     """
     Class containing functionality for NFT card which has limited capabilities
     """
