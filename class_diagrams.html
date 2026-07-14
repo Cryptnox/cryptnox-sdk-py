@@ -157,7 +157,7 @@ illustrate the relationships between classes, inheritance structures, and key co
 <h2>Exception Hierarchy<a class="headerlink" href="#exception-hierarchy" title="Link to this heading"></a></h2>
 <p>The SDK defines a custom exception hierarchy for different error scenarios:</p>
 <figure class="align-default" id="id2">
-<div class="graphviz"><object data="_images/graphviz-b501f6e34fac4ec35baebb854588dc3da1f179c0.svg" type="image/svg+xml" class="graphviz">
+<div class="graphviz"><object data="_images/graphviz-255973f8769943d663f2094bb8ccfb535ea77207.svg" type="image/svg+xml" class="graphviz">
 <p class="warning">digraph exceptions {
    rankdir=LR;
    nodesep=0.3;
@@ -179,7 +179,6 @@ illustrate the relationships between classes, inheritance structures, and key co
    DataException;
    DataValidationException;
    DerivationSelectionException;
-   EOSKeyError;
    FirmwareException;
    GenericException;
    GenuineCheckException;
@@ -206,7 +205,6 @@ illustrate the relationships between classes, inheritance structures, and key co
    CryptnoxException -&gt; DataException;
    CryptnoxException -&gt; DataValidationException;
    CryptnoxException -&gt; DerivationSelectionException;
-   CryptnoxException -&gt; EOSKeyError;
    CryptnoxException -&gt; FirmwareException;
    CryptnoxException -&gt; GenericException;
    CryptnoxException -&gt; GenuineCheckException;
