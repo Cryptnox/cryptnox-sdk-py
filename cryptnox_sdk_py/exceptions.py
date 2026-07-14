@@ -44,8 +44,8 @@ class KeySelectionException(CryptnoxException):
     """Not a valid key type selection"""
 
 
-class EOSKeyError(CryptnoxException):
-    """The signature wasn't compatible with EOS standard after 10 tries"""
+class AppletVersionException(CryptnoxException):
+    """The card applet version is too old for the requested operation."""
 
 
 class FirmwareException(CryptnoxException):

@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Module containing class for Basic card of 1st generation
+Module containing the class for the Basic card family.
+
+The class is named ``Basic``; ``BasicG1`` is kept as a backwards-compatible
+alias. Both card generations share the same applet identity (``select_apdu``),
+so a single class handles them and version-specific capabilities (e.g. Ed25519
+on applet v2.0+) are gated by a runtime applet-version check.
 """
 from collections import namedtuple
 from typing import (
@@ -25,9 +30,9 @@ from ..enums import (
 )
 
 
-class BasicG1(base.Base):
+class Basic(base.Base):
     """
-    Class containing functionality for Basic cards of the 1st generation
+    Class containing functionality for the Basic card family (all generations).
     """
     select_apdu = [0xA0, 0x00, 0x00, 0x10, 0x00, 0x01, 0x12]
     puk_rule = "12 ASCII characters"
@@ -41,6 +46,12 @@ class BasicG1(base.Base):
     _PIN_AUTH_FLAG = int("00010000", 2)
     _PINLESS_FLAG = int("00001000", 2)
     _EXTENDED_PUBLIC_KEY = int("00000100", 2)
+
+    # SIGN command (docs.cryptnox.com v2.0): P2 selects the signing scheme.
+    _SIGN_P2_ECDSA = 0x00
+    _SIGN_P2_EDDSA = 0x03
+    _DER_SEQUENCE_TAG = 0x30           # first byte of a DER-encoded ECDSA signature
+    _ED25519_SIGNATURE_LENGTH = 64     # raw R|S EdDSA signature
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -91,15 +102,15 @@ class BasicG1(base.Base):
 
     @property
     def extended_public_key(self) -> bool:
-        return bool(self._data[1] & BasicG1._EXTENDED_PUBLIC_KEY)
+        return bool(self._data[1] & Basic._EXTENDED_PUBLIC_KEY)
 
     def generate_random_number(self, size: int) -> bytes:
         try:
             size = int(size)
         except ValueError as error:
-            raise exceptions.DataValidationException("Checksum has to be an integer") from error
-        if 16 > size > 64 or size % 4:
-            raise exceptions.DataValidationException("Checksum value must be between 4 and 8.")
+            raise exceptions.DataValidationException("Random size has to be an integer") from error
+        if not 16 <= size <= 64 or size % 4:
+            raise exceptions.DataValidationException("Random size must be between 16 and 64 bytes, multiple of 4.")
 
         return self.connection.send_encrypted([0x80, 0xD3, size, 0x00], b"")
 
@@ -117,7 +128,7 @@ class BasicG1(base.Base):
                                                      "generate another one without resetting the card") from error
             raise
 
-        self._data[1] |= BasicG1._SEED_FLAG
+        self._data[1] |= Basic._SEED_FLAG
 
         if result and not self.open:
             self.auth_type = base.AuthType.PIN
@@ -144,6 +155,23 @@ class BasicG1(base.Base):
         cert = mnft_cert_resp[2:]
         return "".join([f"{x:02x}" for x in cert])
 
+    def _require_ed25519_support(self, key_type: KeyType) -> None:
+        """
+        Ensure the card applet is recent enough to perform Ed25519 (EdDSA)
+        operations. Ed25519 support was introduced in applet v2.0.
+
+        :param KeyType key_type: Key type requested for the operation
+        :raises AppletVersionException: If Ed25519 is requested on a pre-2.0 applet
+        """
+        if key_type != KeyType.ED25519:
+            return
+        if not self.applet_version or self.applet_version[0] < 2:
+            version = ".".join(map(str, self.applet_version)) if self.applet_version else "unknown"
+            raise exceptions.AppletVersionException(
+                f"Ed25519 (Solana) operations require applet v2.0 or later, "
+                f"but the card reports v{version}"
+            )
+
     def get_public_key(self, derivation: Derivation, key_type: KeyType = KeyType.K1, path: str = "",
                        compressed: bool = True, hexed: bool = True) -> str:
         if derivation == Derivation.CURRENT_KEY and path:
@@ -158,6 +186,8 @@ class BasicG1(base.Base):
         key_type = KeyType(key_type)
         derivation = Derivation(derivation)
 
+        self._require_ed25519_support(key_type)
+
         if derivation in (Derivation.PINLESS_PATH,
                           Derivation.DERIVE_AND_MAKE_CURRENT):
             raise exceptions.DerivationSelectionException("This operation doesn't support this derivation form")
@@ -167,7 +197,10 @@ class BasicG1(base.Base):
         data = self.connection.send_encrypted(message, binary_path)
 
         result = data.hex() if hexed else data
-        if compressed:
+        # Compression only applies to the secp256k1/secp256r1 encoding. Allowlist
+        # the ECDSA key types so a raw key (Ed25519) or any future key type is
+        # never silently mangled by encode_pubkey.
+        if compressed and key_type in (KeyType.K1, KeyType.R1):
             result = encode_pubkey(result, "bin_compressed").hex()
 
         return result
@@ -176,6 +209,16 @@ class BasicG1(base.Base):
 
         if self.seed_source == SeedSource.NO_SEED:
             raise exceptions.SeedException("There is no seed on the card")
+
+        # BIP32 extended public keys are defined for secp256k1 only; the card
+        # rejects any P1 != 0 for the EXTPUB export. Normalize first so an unknown
+        # int raises KeySelectionException (not a bare ValueError), then allowlist k1.
+        try:
+            key_type = KeyType(key_type)
+        except ValueError as error:
+            raise exceptions.KeySelectionException(f"Unknown key type: {key_type!r}") from error
+        if key_type not in (KeyType.K1,):
+            raise exceptions.KeySelectionException("Extended public key is only available for k1 keys")
 
         # Step 1: Try to enable XPUB capability if PUK provided
         if puk:
@@ -187,8 +230,8 @@ class BasicG1(base.Base):
                 # If enabling fails, continue anyway - it might already be enabled
                 pass
 
-        # Step 2: Build APDU to get extended public key
-        p1 = 0x00 if key_type == KeyType.K1 else 0x10
+        # Step 2: Build APDU to get extended public key (k1-only, so P1=0x00)
+        p1 = 0x00
         p2 = 0x02  # extended public key (BIP32)
         get_apdu = [0x80, 0xC2, p1, p2]
 
@@ -325,7 +368,7 @@ class BasicG1(base.Base):
 
     @property
     def initialized(self) -> bool:
-        return bool(self._data[1] & BasicG1._INITIALIZATION_FLAG)
+        return bool(self._data[1] & Basic._INITIALIZATION_FLAG)
 
     def load_wrapped_seed(self, seed: bytes, pin: str = "") -> None:
         if self.auth_type == base.AuthType.PIN:
@@ -339,7 +382,7 @@ class BasicG1(base.Base):
                                                      "generate another one without resetting the card") from error
             raise
 
-        self._data[1] |= BasicG1._SEED_FLAG
+        self._data[1] |= Basic._SEED_FLAG
 
         if not self.open:
             self.auth_type = base.AuthType.PIN
@@ -356,18 +399,18 @@ class BasicG1(base.Base):
                                                      "generate another one without resetting the card") from error
             raise
 
-        self._data[1] |= BasicG1._SEED_FLAG
+        self._data[1] |= Basic._SEED_FLAG
 
         if not self.open:
             self.auth_type = base.AuthType.PIN
 
     @property
     def pin_authentication(self) -> bool:
-        return bool(self._data[1] & BasicG1._PIN_AUTH_FLAG)
+        return bool(self._data[1] & Basic._PIN_AUTH_FLAG)
 
     @property
     def pinless_enabled(self) -> bool:
-        return bool(self._data[1] & BasicG1._PINLESS_FLAG)
+        return bool(self._data[1] & Basic._PINLESS_FLAG)
 
     def reset(self, puk: str) -> None:
         puk = self.valid_puk(puk)
@@ -399,7 +442,7 @@ class BasicG1(base.Base):
                 raise exceptions.PinAuthenticationException("PIN can't be set without user key.")
             raise
 
-        self._data[1] |= BasicG1._PIN_AUTH_FLAG
+        self._data[1] |= Basic._PIN_AUTH_FLAG
 
     def set_pinless_path(self, path: str, puk: str) -> None:
         """
@@ -439,7 +482,7 @@ class BasicG1(base.Base):
 
             raise
 
-        self._data[1] |= BasicG1._PINLESS_FLAG
+        self._data[1] |= Basic._PINLESS_FLAG
 
     def set_extended_public_key(self, status: bool, puk: str) -> None:
         """
@@ -487,7 +530,7 @@ class BasicG1(base.Base):
             if error.status == 0x6700:
                 raise exceptions.DataValidationException("Invalid data length")
             raise
-        self._data[3] = BasicG1._set_bit(self._data[3], slot - 1)
+        self._data[3] = Basic._set_bit(self._data[3], slot - 1)
 
     def user_key_delete(self, slot: SlotIndex, puk_code: str) -> None:
         puk_code = self.valid_puk(puk_code)
@@ -505,7 +548,7 @@ class BasicG1(base.Base):
                 raise exceptions.DataValidationException("Slot empty")
             raise
 
-        self._data[3] = BasicG1._clear_bit(self._data[3], slot - 1)
+        self._data[3] = Basic._clear_bit(self._data[3], slot - 1)
 
     def user_key_info(self, slot: SlotIndex) -> Tuple[str, str]:
         try:
@@ -567,9 +610,15 @@ class BasicG1(base.Base):
         if self.seed_source == "NO_SEED":
             raise exceptions.SeedException("There is no key on the card")
 
+        key_type = KeyType(key_type)
+        # Ed25519 (P1=0x20) needs applet v2.0+; raise a clean AppletVersionException
+        # on older cards instead of an opaque card status, matching get_public_key/sign.
+        self._require_ed25519_support(key_type)
+
         CLA = 0x80
         INS = 0xC6
-        P1 = key_type.value if key_type == KeyType.R1 else KeyType.K1.value
+        # P1 selects the curve: k1=0x00, r1=0x10, ed25519=0x20 (all supported).
+        P1 = key_type.value
         P2 = 0x00
         DATA = b""
 
@@ -579,7 +628,7 @@ class BasicG1(base.Base):
         return response
 
     def sign(self, data: bytes, derivation: Derivation = Derivation.CURRENT_KEY, key_type: KeyType = KeyType.K1,
-             path: str = "", pin: str = "", filter_eos: bool = False) -> bytes:
+             path: str = "", pin: str = "") -> bytes:
         if self.seed_source == SeedSource.NO_SEED:
             raise exceptions.SeedException("There is no key on the card")
 
@@ -587,22 +636,48 @@ class BasicG1(base.Base):
         derivation = Derivation(derivation)
         key_type = KeyType(key_type)
 
+        self._require_ed25519_support(key_type)
+
         if derivation == Derivation.DERIVE_AND_MAKE_CURRENT or \
                 (derivation == Derivation.PINLESS_PATH and key_type == KeyType.R1):
             raise exceptions.DerivationSelectionException("This operation doesn't support this derivation form")
 
-        signal = [0x80, 0xC0, derivation + key_type, 0x01 if filter_eos else 0x00]
+        # P2 selects the signing scheme. Allowlist each supported key type so an
+        # unknown/future one raises instead of silently taking the ECDSA path.
+        if key_type == KeyType.ED25519:
+            p2 = Basic._SIGN_P2_EDDSA
+        elif key_type in (KeyType.K1, KeyType.R1):
+            p2 = Basic._SIGN_P2_ECDSA
+        else:
+            raise exceptions.KeySelectionException(f"Unsupported key type for signing: {key_type!r}")
+        signal = [0x80, 0xC0, derivation + key_type, p2]
 
         derivation_base = (derivation + key_type) & 0x0F
-        if derivation_base in (1, 2):
-            data += path_to_bytes(path)
+        include_path = derivation_base in (1, 2)
 
+        # SIGN data field (docs.cryptnox.com v2.0, SIGN command). Across all
+        # variants the PIN is a trailing fixed 9-byte field right-padded with
+        # 0x00, and is omitted when user-key auth was already performed.
+        #   ECDSA: [32-byte hash][path?][PIN]
+        #   EdDSA: [2-byte big-endian message length][raw message][path?][PIN]
+        # Ed25519 is pure - the card hashes the raw message internally - so the
+        # length prefix delimits the variable-length message from the path/PIN.
+        if key_type == KeyType.ED25519:
+            data = len(data).to_bytes(2, "big") + data
+        if include_path:
+            data += path_to_bytes(path)
         if pin:
-            data += bytes(pin, 'ascii')
+            # valid_pin() already right-pads the PIN to the fixed 9-byte field.
+            data += pin.encode("ascii")
 
         result = self.connection.send_encrypted(signal, data)
 
-        if not result or result[0] != 0x30:
+        # Ed25519 returns a raw R|S signature; k1/r1 return a DER sequence.
+        if key_type == KeyType.ED25519:
+            valid = bool(result) and len(result) == Basic._ED25519_SIGNATURE_LENGTH
+        else:
+            valid = bool(result) and result[0] == Basic._DER_SEQUENCE_TAG
+        if not valid:
             self.auth_type = base.AuthType.NO_AUTH
             raise exceptions.DataException("Invalid data received during signature")
 
@@ -610,14 +685,14 @@ class BasicG1(base.Base):
 
     @property
     def valid_key(self) -> bool:
-        return bool(self._data[1] & BasicG1._SEED_FLAG)
+        return bool(self._data[1] & Basic._SEED_FLAG)
 
     @staticmethod
     def valid_puk(puk: str, puk_name: str = "puk") -> str:
-        if len(puk) != BasicG1.PUK_LENGTH:
-            raise exceptions.DataValidationException(f"The {puk_name} must have {BasicG1.PUK_LENGTH} "
+        if len(puk) != Basic.PUK_LENGTH:
+            raise exceptions.DataValidationException(f"The {puk_name} must have {Basic.PUK_LENGTH} "
                                                      f"ASCII characters")
-        if not all(ord(c) < BasicG1.MAX_ASCII_LENGTH for c in puk):
+        if not all(ord(c) < Basic.MAX_ASCII_LENGTH for c in puk):
             raise exceptions.DataValidationException(f"The {puk_name} must contain only ASCII characters.")
 
         return puk
@@ -626,11 +701,11 @@ class BasicG1(base.Base):
         """
         Sign random 32 bytes for validation that private key of public key is on the card.
 
-        BasicG1 cards do not support this operation. Use NFT card instead.
+        Basic cards do not support this operation. Use NFT card instead.
 
-        :raises NotImplementedError: BasicG1 cards do not support signature_check
+        :raises NotImplementedError: Basic cards do not support signature_check
         """
-        raise NotImplementedError("BasicG1 cards do not support signature_check")
+        raise NotImplementedError("Basic cards do not support signature_check")
 
     def verify_pin(self, pin: Optional[str] = None) -> Optional[int]:
         apdu = [0x80, 0x20, 0x00, 0x00]
@@ -735,3 +810,8 @@ class BasicG1(base.Base):
 
         self.set_pubexport(status, 1, puk)
         self.clearpubrd = status
+
+
+# Backwards-compatible alias: this class used to be named BasicG1, but it always
+# handled the whole Basic card family regardless of generation.
+BasicG1 = Basic

@@ -2,6 +2,27 @@
 Changelog
 =========
 
+Version 1.0.5 - 2026-07-14
+------------------------------------------------------------------------------------------------
+
+Added
+^^^^^^^
+
+- Added Ed25519 (EdDSA) signing support for applet v2.0 (``KeyType.ED25519``)
+- Added ``examples/solana_transaction/`` demonstrating Solana signing and transaction building
+
+Changed
+^^^^^^^
+
+- Renamed ``BasicG1`` card class to ``Basic`` (``BasicG1`` kept as a backwards-compatible alias)
+- Padded the SIGN PIN to the spec's fixed 9-byte field and replaced SIGN magic numbers with named constants
+- Replaced hardcoded PINs in examples with a named PIN variable
+
+Fixed
+^^^^^^^
+
+- Guarded Ed25519 key handling against silently falling through to the ECDSA path (unknown key types now raise)
+
 Version 1.0.4 - 2026-04-10
 ------------------------------------------------------------------------------------------------
 
