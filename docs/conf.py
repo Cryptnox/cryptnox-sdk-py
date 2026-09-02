@@ -140,7 +140,7 @@ inheritance_edge_attrs = {
 
 # -- SEO meta tags -----------------------------------------------------------
 
-html_baseurl = 'https://cryptnox.github.io/cryptnox-sdk-py/'
+html_baseurl = 'https://docs.cryptnox.com/cryptnox-sdk-py/'
 
 html_meta = {
     'description': (
