@@ -41,7 +41,7 @@ jobs:
           grep -v "pyscard" dev-requirements.txt > docs-requirements.txt
           python -m pip install -r docs-requirements.txt
           # Explicitly ensure sphinx, theme, and graphviz bindings are installed
-          python -m pip install sphinx sphinx-rtd-theme graphviz cairosvg pillow
+          python -m pip install sphinx sphinx-rtd-theme sphinx-sitemap graphviz cairosvg pillow
           echo "Installation check:"
           python -m pip list | grep -i sphinx
 

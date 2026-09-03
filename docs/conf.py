@@ -45,6 +45,7 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
+    "sphinx_sitemap",
     "sphinx.ext.graphviz",
     "sphinx.ext.inheritance_diagram",
 ]
@@ -141,6 +142,11 @@ inheritance_edge_attrs = {
 # -- SEO meta tags -----------------------------------------------------------
 
 html_baseurl = 'https://docs.cryptnox.com/cryptnox-sdk-py/'
+
+# sphinx-sitemap writes sitemap.xml next to the pages, with html_baseurl as the prefix.
+# The docs hub (cryptnox.github.io) lists it in docs.cryptnox.com/robots.txt.
+sitemap_url_scheme = "{link}"
+sitemap_excludes = ["search.html", "genindex.html", "py-modindex.html"]
 
 html_meta = {
     'description': (
