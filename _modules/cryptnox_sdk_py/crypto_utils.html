@@ -13,7 +13,7 @@
 
   
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
-    <link rel="canonical" href="https://cryptnox.github.io/cryptnox-sdk-py/_modules/cryptnox_sdk_py/crypto_utils.html" />
+    <link rel="canonical" href="https://docs.cryptnox.com/cryptnox-sdk-py/_modules/cryptnox_sdk_py/crypto_utils.html" />
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../../_static/documentation_options.js?v=2882ecd3"></script>
@@ -22,7 +22,26 @@
       <script src="../../_static/custom.js?v=b6ee92be"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+ 
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://docs.cryptnox.com/cryptnox-sdk-py/_modules/cryptnox_sdk_py/crypto_utils.html" />
+<meta property="og:title" content="cryptnox_sdk_py.crypto_utils | Cryptnox Docs" />
+<meta property="og:description" content="Cryptnox Python SDK — API reference for managing Cryptnox smart card hardware wallets from Python: card lifecycle, secure channel, seed and key management, and signing." />
+<meta property="og:site_name" content="Cryptnox Docs" />
+<meta property="og:image" content="https://cryptnox.com/wp-content/uploads/2026/09/cryptnox-documentation-social.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:alt" content="Cryptnox Technical Documentation" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@CryptnoxTech" />
+<meta name="twitter:title" content="cryptnox_sdk_py.crypto_utils | Cryptnox Docs" />
+<meta name="twitter:description" content="Cryptnox Python SDK — API reference for managing Cryptnox smart card hardware wallets from Python: card lifecycle, secure channel, seed and key management, and signing." />
+<meta name="twitter:image" content="https://cryptnox.com/wp-content/uploads/2026/09/cryptnox-documentation-social.jpg" />
+<meta name="twitter:image:alt" content="Cryptnox Technical Documentation" />
+
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -79,9 +98,9 @@
              
   <h1>Source code for cryptnox_sdk_py.crypto_utils</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="sd">Module containing cryptographic methods used by the library</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">cryptography.hazmat.backends</span><span class="w"> </span><span class="kn">import</span> <span class="n">default_backend</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">cryptography.hazmat.primitives.ciphers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Cipher</span><span class="p">,</span> <span class="n">algorithms</span><span class="p">,</span> <span class="n">modes</span>
@@ -90,7 +109,7 @@
 <div class="viewcode-block" id="aes_encrypt">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.crypto_utils.aes_encrypt">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">aes_encrypt</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">initialization_vector</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    AES encrypt data using key and initialization vector.</span>
 
 <span class="sd">    :param bytes key: Key to use for encryption</span>
@@ -99,7 +118,7 @@
 
 <span class="sd">    :return: Encrypted data</span>
 <span class="sd">    :rtype: bytes</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1"># AES-CBC is required by the SCP03 smartcard protocol; authentication is handled via separate MAC</span>
     <span class="c1"># nosemgrep: python.cryptography.security.mode-without-authentication.crypto-mode-without-authentication</span>
     <span class="n">cipher</span> <span class="o">=</span> <span class="n">Cipher</span><span class="p">(</span><span class="n">algorithms</span><span class="o">.</span><span class="n">AES</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">modes</span><span class="o">.</span><span class="n">CBC</span><span class="p">(</span><span class="n">initialization_vector</span><span class="p">),</span>
@@ -114,7 +133,7 @@
 <div class="viewcode-block" id="aes_decrypt">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.crypto_utils.aes_decrypt">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">aes_decrypt</span><span class="p">(</span><span class="n">key</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">initialization_vector</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    AES decrypt data using key and initialization vector.</span>
 
 <span class="sd">    :param bytes key: Key to use for encryption</span>
@@ -123,7 +142,7 @@
 
 <span class="sd">    :return: Decrypted data</span>
 <span class="sd">    :rtype: bytes</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1"># AES-CBC is required by the SCP03 smartcard protocol; authentication is handled via separate MAC</span>
     <span class="c1"># nosemgrep: python.cryptography.security.mode-without-authentication.crypto-mode-without-authentication</span>
     <span class="n">cipher</span> <span class="o">=</span> <span class="n">Cipher</span><span class="p">(</span><span class="n">algorithms</span><span class="o">.</span><span class="n">AES</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">modes</span><span class="o">.</span><span class="n">CBC</span><span class="p">(</span><span class="n">initialization_vector</span><span class="p">),</span>

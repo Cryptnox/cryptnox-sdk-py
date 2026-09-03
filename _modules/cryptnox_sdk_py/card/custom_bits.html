@@ -13,7 +13,7 @@
 
   
     <link rel="shortcut icon" href="../../../_static/favicon.png"/>
-    <link rel="canonical" href="https://cryptnox.github.io/cryptnox-sdk-py/_modules/cryptnox_sdk_py/card/custom_bits.html" />
+    <link rel="canonical" href="https://docs.cryptnox.com/cryptnox-sdk-py/_modules/cryptnox_sdk_py/card/custom_bits.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../../../_static/documentation_options.js?v=2882ecd3"></script>
@@ -22,7 +22,26 @@
       <script src="../../../_static/custom.js?v=b6ee92be"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" />
+ 
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://docs.cryptnox.com/cryptnox-sdk-py/_modules/cryptnox_sdk_py/card/custom_bits.html" />
+<meta property="og:title" content="cryptnox_sdk_py.card.custom_bits | Cryptnox Docs" />
+<meta property="og:description" content="Cryptnox Python SDK — API reference for managing Cryptnox smart card hardware wallets from Python: card lifecycle, secure channel, seed and key management, and signing." />
+<meta property="og:site_name" content="Cryptnox Docs" />
+<meta property="og:image" content="https://cryptnox.com/wp-content/uploads/2026/09/cryptnox-documentation-social.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:alt" content="Cryptnox Technical Documentation" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@CryptnoxTech" />
+<meta name="twitter:title" content="cryptnox_sdk_py.card.custom_bits | Cryptnox Docs" />
+<meta name="twitter:description" content="Cryptnox Python SDK — API reference for managing Cryptnox smart card hardware wallets from Python: card lifecycle, secure channel, seed and key management, and signing." />
+<meta name="twitter:image" content="https://cryptnox.com/wp-content/uploads/2026/09/cryptnox-documentation-social.jpg" />
+<meta name="twitter:image:alt" content="Cryptnox Technical Documentation" />
+
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -79,24 +98,24 @@
              
   <h1>Source code for cryptnox_sdk_py.card.custom_bits</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="sd">Module for making the uer data behave as a list</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 
 <div class="viewcode-block" id="CustomBitsBase">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.card.html#cryptnox_sdk_py.card.base.CustomBitsBase">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">CustomBitsBase</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Class for User Data with all functions returning not implemented in case someone uses it on a</span>
-<span class="sd">    card that doesn&#39;t support the feature</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    card that doesn't support the feature</span>
+<span class="sd">    """</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Card doesn&#39;t have this functionality&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Card doesn't have this functionality"</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Card doesn&#39;t have this functionality&quot;</span><span class="p">)</span></div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Card doesn't have this functionality"</span><span class="p">)</span></div>
 
 
 
@@ -112,7 +131,7 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
         <span class="k">if</span> <span class="mi">0</span> <span class="o">&gt;</span> <span class="n">position</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s1">&#39;Position out of bounds&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s1">'Position out of bounds'</span><span class="p">)</span>
 
         <span class="n">list_position</span> <span class="o">=</span> <span class="n">position</span> <span class="o">//</span> <span class="mi">8</span>
         <span class="n">element_position</span> <span class="o">=</span> <span class="n">position</span> <span class="o">%</span> <span class="n">list_position</span> <span class="k">if</span> <span class="n">list_position</span> <span class="k">else</span> <span class="n">position</span>
@@ -122,7 +141,7 @@
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="k">if</span> <span class="mi">0</span> <span class="o">&gt;</span> <span class="n">position</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s1">&#39;Position out of bounds&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s1">'Position out of bounds'</span><span class="p">)</span>
 
         <span class="n">list_position</span> <span class="o">=</span> <span class="n">position</span> <span class="o">//</span> <span class="mi">8</span>
         <span class="n">element_position</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">%</span> <span class="n">list_position</span> <span class="k">if</span> <span class="n">list_position</span> <span class="k">else</span> <span class="n">position</span>

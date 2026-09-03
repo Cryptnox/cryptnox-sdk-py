@@ -13,7 +13,7 @@
 
   
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
-    <link rel="canonical" href="https://cryptnox.github.io/cryptnox-sdk-py/_modules/cryptnox_sdk_py/binary_utils.html" />
+    <link rel="canonical" href="https://docs.cryptnox.com/cryptnox-sdk-py/_modules/cryptnox_sdk_py/binary_utils.html" />
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../../_static/documentation_options.js?v=2882ecd3"></script>
@@ -22,7 +22,26 @@
       <script src="../../_static/custom.js?v=b6ee92be"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+ 
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://docs.cryptnox.com/cryptnox-sdk-py/_modules/cryptnox_sdk_py/binary_utils.html" />
+<meta property="og:title" content="cryptnox_sdk_py.binary_utils | Cryptnox Docs" />
+<meta property="og:description" content="Cryptnox Python SDK — API reference for managing Cryptnox smart card hardware wallets from Python: card lifecycle, secure channel, seed and key management, and signing." />
+<meta property="og:site_name" content="Cryptnox Docs" />
+<meta property="og:image" content="https://cryptnox.com/wp-content/uploads/2026/09/cryptnox-documentation-social.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:alt" content="Cryptnox Technical Documentation" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@CryptnoxTech" />
+<meta name="twitter:title" content="cryptnox_sdk_py.binary_utils | Cryptnox Docs" />
+<meta name="twitter:description" content="Cryptnox Python SDK — API reference for managing Cryptnox smart card hardware wallets from Python: card lifecycle, secure channel, seed and key management, and signing." />
+<meta name="twitter:image" content="https://cryptnox.com/wp-content/uploads/2026/09/cryptnox-documentation-social.jpg" />
+<meta name="twitter:image:alt" content="Cryptnox Technical Documentation" />
+
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -79,9 +98,9 @@
              
   <h1>Source code for cryptnox_sdk_py.binary_utils</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="sd">Utility module for handling binary data</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
@@ -89,8 +108,8 @@
 
 <div class="viewcode-block" id="list_to_hexadecimal">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.binary_utils.list_to_hexadecimal">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">list_to_hexadecimal</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">sep</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">list_to_hexadecimal</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">sep</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Convert list of integers into hexadecimal representation</span>
 
 <span class="sd">    :param List[int] data: List of integer to return in hexadecimal string form</span>
@@ -98,23 +117,23 @@
 
 <span class="sd">    :return: list</span>
 <span class="sd">    :rtype: str</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">02x</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span></div>
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">02x</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span></div>
 
 
 
 <div class="viewcode-block" id="hexadecimal_to_list">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.binary_utils.hexadecimal_to_list">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">hexadecimal_to_list</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Convert given string containing hexadecimal representation of numbers into</span>
 <span class="sd">    list of integers</span>
 
 <span class="sd">    :param string value: String containing hexadecimal numbers</span>
 <span class="sd">    :return: List of hexadecimal values in integer form</span>
 <span class="sd">    :rtype: List[int]</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">groups</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="n">groups</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">".."</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">]</span></div>
 
@@ -123,38 +142,38 @@
 <div class="viewcode-block" id="path_to_bytes">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.binary_utils.path_to_bytes">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">path_to_bytes</span><span class="p">(</span><span class="n">path_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Convert given path for format that the card uses</span>
 
 <span class="sd">    :param str path_str: path to convert</span>
 <span class="sd">    :return: path formatted for use with the card.</span>
 <span class="sd">    :rtype: bytes</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">read_path_unit</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"'"</span><span class="p">:</span>
             <span class="n">out</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">path</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">2147483648</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">out</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">out</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">byteorder</span><span class="o">=</span><span class="s1">&#39;big&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">byteorder</span><span class="o">=</span><span class="s1">'big'</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">path_str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;m/&quot;</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;BIP-32 path must start with &#39;m/&#39;, got: </span><span class="si">{</span><span class="n">path_str</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">path_str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"m/"</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"BIP-32 path must start with 'm/', got: </span><span class="si">{</span><span class="n">path_str</span><span class="si">!r}</span><span class="s2">"</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">read_path_unit</span><span class="p">,</span> <span class="n">path_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]))</span></div>
+    <span class="k">return</span> <span class="sa">b</span><span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">read_path_unit</span><span class="p">,</span> <span class="n">path_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]))</span></div>
 
 
 
 <div class="viewcode-block" id="binary_to_list">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.binary_utils.binary_to_list">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">binary_to_list</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Convert given binary data to it&#39;s representation as a list of hexadecimal</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Convert given binary data to it's representation as a list of hexadecimal</span>
 <span class="sd">    values.</span>
 
 <span class="sd">    :param bytes data: Binary data to convert to</span>
 <span class="sd">    :return: List containing data in hexadecimal numbers in integer format</span>
 <span class="sd">    :rtype: List[int]</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">return</span> <span class="n">hexadecimal_to_list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">hex</span><span class="p">())</span></div>
 
 
@@ -162,13 +181,13 @@
 <div class="viewcode-block" id="pad_data">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.binary_utils.pad_data">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">pad_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Pad data with 0s to be length of 128.</span>
 
 <span class="sd">    :param data: Data to be padded.</span>
 <span class="sd">    :return: Data padded with 0s with length 128.</span>
 <span class="sd">    :rtype: bytes</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">data_array</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="n">data_array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
     <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_array</span><span class="p">)</span> <span class="o">%</span> <span class="mi">16</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -180,19 +199,19 @@
 <div class="viewcode-block" id="remove_padding">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.binary_utils.remove_padding">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">remove_padding</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Remove padding from the data</span>
 
 <span class="sd">    :param bytes data: Data from which to remove padding</span>
 <span class="sd">    :return: Data without the padding</span>
 <span class="sd">    :rtype: bytes</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">i</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
     <span class="k">while</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">i</span> <span class="o">-=</span> <span class="mi">1</span>
 
     <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="mh">0x80</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Bad padding in received data&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Bad padding in received data"</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">data</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span></div>
 

@@ -13,7 +13,7 @@
 
   
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
-    <link rel="canonical" href="https://cryptnox.github.io/cryptnox-sdk-py/_modules/cryptnox_sdk_py/reader.html" />
+    <link rel="canonical" href="https://docs.cryptnox.com/cryptnox-sdk-py/_modules/cryptnox_sdk_py/reader.html" />
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../../_static/documentation_options.js?v=2882ecd3"></script>
@@ -22,7 +22,26 @@
       <script src="../../_static/custom.js?v=b6ee92be"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+ 
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://docs.cryptnox.com/cryptnox-sdk-py/_modules/cryptnox_sdk_py/reader.html" />
+<meta property="og:title" content="cryptnox_sdk_py.reader | Cryptnox Docs" />
+<meta property="og:description" content="Cryptnox Python SDK — API reference for managing Cryptnox smart card hardware wallets from Python: card lifecycle, secure channel, seed and key management, and signing." />
+<meta property="og:site_name" content="Cryptnox Docs" />
+<meta property="og:image" content="https://cryptnox.com/wp-content/uploads/2026/09/cryptnox-documentation-social.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:alt" content="Cryptnox Technical Documentation" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@CryptnoxTech" />
+<meta name="twitter:title" content="cryptnox_sdk_py.reader | Cryptnox Docs" />
+<meta name="twitter:description" content="Cryptnox Python SDK — API reference for managing Cryptnox smart card hardware wallets from Python: card lifecycle, secure channel, seed and key management, and signing." />
+<meta name="twitter:image" content="https://cryptnox.com/wp-content/uploads/2026/09/cryptnox-documentation-social.jpg" />
+<meta name="twitter:image:alt" content="Cryptnox Technical Documentation" />
+
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -79,9 +98,9 @@
              
   <h1>Source code for cryptnox_sdk_py.reader</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="sd">Module that handles different card reader types and their drivers.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">abc</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
@@ -110,36 +129,36 @@
 <div class="viewcode-block" id="ReaderException">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.reader.ReaderException">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ReaderException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Reader hasn&#39;t been found or other reader related issues</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Reader hasn't been found or other reader related issues</span>
+<span class="sd">    """</span></div>
 
 
 
 <div class="viewcode-block" id="CardException">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.reader.CardException">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">CardException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    The reader is present but there is an issue in connecting to the card</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
+<span class="sd">    """</span></div>
 
 
 
 <div class="viewcode-block" id="ConnectionException">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.reader.ConnectionException">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ConnectionException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    An issue has occurred in the communication with the card.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
+<span class="sd">    """</span></div>
 
 
 
 <div class="viewcode-block" id="Reader">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.reader.Reader">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Reader</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Abstract class describing methods to be implemented. Holds the connection.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
 <div class="viewcode-block" id="Reader.__init__">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.reader.Reader.__init__">[docs]</a>
@@ -155,47 +174,47 @@
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.reader.Reader.connect">[docs]</a>
     <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Connect to the card found in the selected reader.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
+<span class="sd">        """</span></div>
 
 
 <div class="viewcode-block" id="Reader.send">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.reader.Reader.send">[docs]</a>
     <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">apdu</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Send APDU to the reader and card and retrieve the result with status</span>
 <span class="sd">        codes.</span>
 
 <span class="sd">        :param List[int] apdu: Command to be sent</span>
 <span class="sd">        :return: Return the result of the query and two status codes</span>
 <span class="sd">        :rtype: Tuple[List[str], int, int]</span>
-<span class="sd">        &quot;&quot;&quot;</span></div>
+<span class="sd">        """</span></div>
 
 
 <div class="viewcode-block" id="Reader.bool">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.reader.Reader.bool">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">bool</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Is there an active connection</span>
 
 <span class="sd">        :rtype: Is there an active connection</span>
 <span class="sd">        :return: bool</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span></div>
 
 
 <div class="viewcode-block" id="Reader.disconnect">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.reader.Reader.disconnect">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""</span>
 <span class="sd">        Disconnect from the card.</span>
 
 <span class="sd">        :return: None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        """</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="kc">None</span></div>
 
@@ -215,9 +234,9 @@
 <div class="viewcode-block" id="NfcReader">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.reader.NfcReader">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">NfcReader</span><span class="p">(</span><span class="n">Reader</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Specialized reader using xantares/nfc-binding</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
 <div class="viewcode-block" id="NfcReader.__init__">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.reader.NfcReader.__init__">[docs]</a>
@@ -228,7 +247,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="n">nfc</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">nfc_context</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">ReaderException</span><span class="p">(</span><span class="s2">&quot;Card reader not found.&quot;</span><span class="p">)</span></div>
+            <span class="k">raise</span> <span class="n">ReaderException</span><span class="p">(</span><span class="s2">"Card reader not found."</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="NfcReader.connect">
@@ -251,7 +270,7 @@
                                              <span class="nb">len</span><span class="p">(</span><span class="n">message_ba</span><span class="p">),</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">ret</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;RFID transceive error: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ret</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"RFID transceive error: </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">ret</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
             <span class="k">return</span> <span class="p">[],</span> <span class="mh">0x99</span><span class="p">,</span> <span class="mh">0x99</span>
 
         <span class="n">length</span> <span class="o">=</span> <span class="n">ret</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -264,11 +283,11 @@
 <div class="viewcode-block" id="SmartCard">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.reader.SmartCard">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">SmartCard</span><span class="p">(</span><span class="n">Reader</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Generic smart card reader class</span>
 
 <span class="sd">    :param int index: Index of the reader to initialize.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
 <div class="viewcode-block" id="SmartCard.__init__">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.reader.SmartCard.__init__">[docs]</a>
@@ -276,16 +295,16 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">found_readers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Yubico&quot;</span><span class="p">),</span> <span class="n">readers</span><span class="p">()))</span>
+            <span class="n">found_readers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"Yubico"</span><span class="p">),</span> <span class="n">readers</span><span class="p">()))</span>
         <span class="k">except</span> <span class="n">smartcard</span><span class="o">.</span><span class="n">pcsc</span><span class="o">.</span><span class="n">PCSCExceptions</span><span class="o">.</span><span class="n">EstablishContextException</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">ReaderException</span><span class="p">(</span><span class="s2">&quot;Readers not detected on the system&quot;</span><span class="p">)</span> \
+            <span class="k">raise</span> <span class="n">ReaderException</span><span class="p">(</span><span class="s2">"Readers not detected on the system"</span><span class="p">)</span> \
                 <span class="kn">from</span><span class="w"> </span><span class="nn">error</span>
 
         <span class="k">try</span><span class="p">:</span>
             <span class="n">found_reader</span> <span class="o">=</span> <span class="n">found_readers</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="n">found_reader</span><span class="o">.</span><span class="n">createConnection</span><span class="p">()</span>
         <span class="k">except</span> <span class="ne">IndexError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">ReaderException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reader with index </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2"> not found.&quot;</span><span class="p">)</span> \
+            <span class="k">raise</span> <span class="n">ReaderException</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Reader with index </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2"> not found."</span><span class="p">)</span> \
                 <span class="kn">from</span><span class="w"> </span><span class="nn">error</span></div>
 
 
@@ -295,9 +314,9 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">CardConnection</span><span class="o">.</span><span class="n">T1_protocol</span><span class="p">)</span>
         <span class="k">except</span> <span class="n">smartcard</span><span class="o">.</span><span class="n">Exceptions</span><span class="o">.</span><span class="n">NoCardException</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">CardException</span><span class="p">(</span><span class="s2">&quot;The reader has no card inserted&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">error</span>
+            <span class="k">raise</span> <span class="n">CardException</span><span class="p">(</span><span class="s2">"The reader has no card inserted"</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">error</span>
         <span class="k">except</span> <span class="n">smartcard</span><span class="o">.</span><span class="n">Exceptions</span><span class="o">.</span><span class="n">CardConnectionException</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">CardException</span><span class="p">(</span><span class="s2">&quot;The reader has no card inserted&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">error</span></div>
+            <span class="k">raise</span> <span class="n">CardException</span><span class="p">(</span><span class="s2">"The reader has no card inserted"</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">error</span></div>
 
 
 <div class="viewcode-block" id="SmartCard.send">
@@ -306,7 +325,7 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">transmit</span><span class="p">(</span><span class="n">apdu</span><span class="p">)</span>
         <span class="k">except</span> <span class="n">smartcard</span><span class="o">.</span><span class="n">Exceptions</span><span class="o">.</span><span class="n">CardConnectionException</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">ConnectionException</span><span class="p">(</span><span class="s2">&quot;Connection issue&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">error</span></div>
+            <span class="k">raise</span> <span class="n">ConnectionException</span><span class="p">(</span><span class="s2">"Connection issue"</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">error</span></div>
 
 
 <div class="viewcode-block" id="SmartCard.disconnect">
@@ -327,19 +346,19 @@
 <div class="viewcode-block" id="get">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.reader.get">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="n">index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Reader</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Get the reader that can be found on the given position.</span>
 
 <span class="sd">    :param int index: Index of reader to be initialized and used</span>
 <span class="sd">    :return: Reader object that can be used.</span>
 <span class="sd">    :rtype: Reader</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="n">SMARTCARD_AVAILABLE</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">SmartCard</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">NFC_AVAILABLE</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">NfcReader</span><span class="p">()</span>
 
-    <span class="k">raise</span> <span class="n">ReaderException</span><span class="p">(</span><span class="s2">&quot;No readers available&quot;</span><span class="p">)</span></div>
+    <span class="k">raise</span> <span class="n">ReaderException</span><span class="p">(</span><span class="s2">"No readers available"</span><span class="p">)</span></div>
 
 </pre></div>
 

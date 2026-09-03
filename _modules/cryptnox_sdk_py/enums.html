@@ -13,7 +13,7 @@
 
   
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
-    <link rel="canonical" href="https://cryptnox.github.io/cryptnox-sdk-py/_modules/cryptnox_sdk_py/enums.html" />
+    <link rel="canonical" href="https://docs.cryptnox.com/cryptnox-sdk-py/_modules/cryptnox_sdk_py/enums.html" />
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../../_static/documentation_options.js?v=2882ecd3"></script>
@@ -22,7 +22,26 @@
       <script src="../../_static/custom.js?v=b6ee92be"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+ 
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://docs.cryptnox.com/cryptnox-sdk-py/_modules/cryptnox_sdk_py/enums.html" />
+<meta property="og:title" content="cryptnox_sdk_py.enums | Cryptnox Docs" />
+<meta property="og:description" content="Cryptnox Python SDK — API reference for managing Cryptnox smart card hardware wallets from Python: card lifecycle, secure channel, seed and key management, and signing." />
+<meta property="og:site_name" content="Cryptnox Docs" />
+<meta property="og:image" content="https://cryptnox.com/wp-content/uploads/2026/09/cryptnox-documentation-social.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:alt" content="Cryptnox Technical Documentation" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@CryptnoxTech" />
+<meta name="twitter:title" content="cryptnox_sdk_py.enums | Cryptnox Docs" />
+<meta name="twitter:description" content="Cryptnox Python SDK — API reference for managing Cryptnox smart card hardware wallets from Python: card lifecycle, secure channel, seed and key management, and signing." />
+<meta name="twitter:image" content="https://cryptnox.com/wp-content/uploads/2026/09/cryptnox-documentation-social.jpg" />
+<meta name="twitter:image:alt" content="Cryptnox Technical Documentation" />
+
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -79,9 +98,9 @@
              
   <h1>Source code for cryptnox_sdk_py.enums</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="sd">Enum classes used by the module</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">Enum</span><span class="p">,</span>
@@ -92,9 +111,9 @@
 <div class="viewcode-block" id="AuthType">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.enums.AuthType">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">AuthType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Predefined values for authentication type.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">NO_AUTH</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">PIN</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">USER_KEY</span> <span class="o">=</span> <span class="mi">2</span>
@@ -107,9 +126,9 @@
 <div class="viewcode-block" id="Derivation">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.enums.Derivation">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Derivation</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Predefined values to use for parameters as Derivation.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">CURRENT_KEY</span> <span class="o">=</span> <span class="mh">0x00</span>
     <span class="n">DERIVE</span> <span class="o">=</span> <span class="mh">0x01</span>
     <span class="n">DERIVE_AND_MAKE_CURRENT</span> <span class="o">=</span> <span class="mh">0x02</span>
@@ -120,9 +139,9 @@
 <div class="viewcode-block" id="KeyType">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.enums.KeyType">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">KeyType</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Predefined values to use for parameters as KeyType.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">K1</span> <span class="o">=</span> <span class="mh">0x00</span>
     <span class="n">R1</span> <span class="o">=</span> <span class="mh">0x10</span>
     <span class="n">ED25519</span> <span class="o">=</span> <span class="mh">0x20</span></div>
@@ -132,9 +151,9 @@
 <div class="viewcode-block" id="Origin">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.enums.Origin">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Origin</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Predefined values for keeping the origin of the card</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">UNKNOWN</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">ORIGINAL</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">FAKE</span> <span class="o">=</span> <span class="mi">2</span></div>
@@ -144,9 +163,9 @@
 <div class="viewcode-block" id="SlotIndex">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.enums.SlotIndex">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">SlotIndex</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Predefined values to use for parameters as SlotIndex.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">EC256R1</span> <span class="o">=</span> <span class="mh">0x01</span>
     <span class="n">RSA</span> <span class="o">=</span> <span class="mh">0x02</span>
     <span class="n">FIDO</span> <span class="o">=</span> <span class="mh">0x03</span></div>
@@ -156,16 +175,16 @@
 <div class="viewcode-block" id="SeedSource">
 <a class="viewcode-back" href="../../cryptnox_sdk_py.html#cryptnox_sdk_py.enums.SeedSource">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">SeedSource</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Predefined values for how seed was created</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">NO_SEED</span> <span class="o">=</span> <span class="mh">0x00</span>
-    <span class="n">SINGLE</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;K&quot;</span><span class="p">)</span>
-    <span class="n">EXTENDED</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
-    <span class="n">EXTERNAL</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;L&quot;</span><span class="p">)</span>
-    <span class="n">INTERNAL</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
-    <span class="n">DUAL</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">)</span>
-    <span class="n">WRAPPED</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">)</span></div>
+    <span class="n">SINGLE</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">"K"</span><span class="p">)</span>
+    <span class="n">EXTENDED</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">"X"</span><span class="p">)</span>
+    <span class="n">EXTERNAL</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">"L"</span><span class="p">)</span>
+    <span class="n">INTERNAL</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">"S"</span><span class="p">)</span>
+    <span class="n">DUAL</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">"D"</span><span class="p">)</span>
+    <span class="n">WRAPPED</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">"R"</span><span class="p">)</span></div>
 
 </pre></div>
 

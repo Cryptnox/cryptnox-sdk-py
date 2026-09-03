@@ -13,7 +13,7 @@
 
   
     <link rel="shortcut icon" href="../../../_static/favicon.png"/>
-    <link rel="canonical" href="https://cryptnox.github.io/cryptnox-sdk-py/_modules/cryptnox_sdk_py/card/nft.html" />
+    <link rel="canonical" href="https://docs.cryptnox.com/cryptnox-sdk-py/_modules/cryptnox_sdk_py/card/nft.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../../../_static/documentation_options.js?v=2882ecd3"></script>
@@ -22,7 +22,26 @@
       <script src="../../../_static/custom.js?v=b6ee92be"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" />
+ 
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://docs.cryptnox.com/cryptnox-sdk-py/_modules/cryptnox_sdk_py/card/nft.html" />
+<meta property="og:title" content="cryptnox_sdk_py.card.nft | Cryptnox Docs" />
+<meta property="og:description" content="Cryptnox Python SDK — API reference for managing Cryptnox smart card hardware wallets from Python: card lifecycle, secure channel, seed and key management, and signing." />
+<meta property="og:site_name" content="Cryptnox Docs" />
+<meta property="og:image" content="https://cryptnox.com/wp-content/uploads/2026/09/cryptnox-documentation-social.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:alt" content="Cryptnox Technical Documentation" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@CryptnoxTech" />
+<meta name="twitter:title" content="cryptnox_sdk_py.card.nft | Cryptnox Docs" />
+<meta name="twitter:description" content="Cryptnox Python SDK — API reference for managing Cryptnox smart card hardware wallets from Python: card lifecycle, secure channel, seed and key management, and signing." />
+<meta name="twitter:image" content="https://cryptnox.com/wp-content/uploads/2026/09/cryptnox-documentation-social.jpg" />
+<meta name="twitter:image:alt" content="Cryptnox Technical Documentation" />
+
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -79,9 +98,9 @@
              
   <h1>Source code for cryptnox_sdk_py.card.nft</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="sd">Module containing class for NFT card</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tuple</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">base</span>
@@ -98,11 +117,11 @@
 <div class="viewcode-block" id="Nft">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.card.html#cryptnox_sdk_py.card.nft.Nft">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Nft</span><span class="p">(</span><span class="n">basic_g1</span><span class="o">.</span><span class="n">Basic</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Class containing functionality for NFT card which has limited capabilities</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nb">type</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">)</span>
-    <span class="n">_type</span> <span class="o">=</span> <span class="s2">&quot;NFT&quot;</span>
+<span class="sd">    """</span>
+    <span class="nb">type</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">"N"</span><span class="p">)</span>
+    <span class="n">_type</span> <span class="o">=</span> <span class="s2">"NFT"</span>
 
 <div class="viewcode-block" id="Nft.__init__">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.card.html#cryptnox_sdk_py.card.nft.Nft.__init__">[docs]</a>
@@ -113,31 +132,31 @@
 
 <div class="viewcode-block" id="Nft.derive">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.card.html#cryptnox_sdk_py.card.nft.Nft.derive">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">derive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key_type</span><span class="p">:</span> <span class="n">KeyType</span> <span class="o">=</span> <span class="n">KeyType</span><span class="o">.</span><span class="n">K1</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Card doesn&#39;t have this functionality&quot;</span><span class="p">)</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">derive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key_type</span><span class="p">:</span> <span class="n">KeyType</span> <span class="o">=</span> <span class="n">KeyType</span><span class="o">.</span><span class="n">K1</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Card doesn't have this functionality"</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Nft.get_public_key">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.card.html#cryptnox_sdk_py.card.nft.Nft.get_public_key">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_public_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">derivation</span><span class="p">:</span> <span class="n">Derivation</span> <span class="o">=</span> <span class="n">Derivation</span><span class="o">.</span><span class="n">CURRENT_KEY</span><span class="p">,</span>
-                       <span class="n">key_type</span><span class="p">:</span> <span class="n">KeyType</span> <span class="o">=</span> <span class="n">KeyType</span><span class="o">.</span><span class="n">K1</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                       <span class="n">key_type</span><span class="p">:</span> <span class="n">KeyType</span> <span class="o">=</span> <span class="n">KeyType</span><span class="o">.</span><span class="n">K1</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span>
                        <span class="n">compressed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">hexed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">derivation</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">Derivation</span><span class="o">.</span><span class="n">CURRENT_KEY</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DerivationSelectionException</span><span class="p">(</span><span class="s2">&quot;This card type doesn&#39;t support this &quot;</span>
-                                                          <span class="s2">&quot;derivation form&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DerivationSelectionException</span><span class="p">(</span><span class="s2">"This card type doesn't support this "</span>
+                                                          <span class="s2">"derivation form"</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">key_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">KeyType</span><span class="o">.</span><span class="n">K1</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">KeySelectionException</span><span class="p">(</span><span class="s2">&quot;This card type doesn&#39;t support this key type&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">KeySelectionException</span><span class="p">(</span><span class="s2">"This card type doesn't support this key type"</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_public_key</span><span class="p">(</span><span class="n">derivation</span><span class="p">,</span> <span class="n">key_type</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">compressed</span><span class="p">,</span> <span class="n">hexed</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Nft.get_public_key_clear">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.card.html#cryptnox_sdk_py.card.nft.Nft.get_public_key_clear">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">get_public_key_clear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">derivation</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">compressed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_public_key_clear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">derivation</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="n">compressed</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
 
         <span class="k">if</span> <span class="n">derivation</span> <span class="o">!=</span> <span class="n">Derivation</span><span class="o">.</span><span class="n">CURRENT_KEY</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DerivationSelectionException</span><span class="p">(</span><span class="s2">&quot;This card type doesn&#39;t support this derivation form&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DerivationSelectionException</span><span class="p">(</span><span class="s2">"This card type doesn't support this derivation form"</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_public_key_clear</span><span class="p">(</span><span class="n">derivation</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">compressed</span><span class="p">)</span></div>
 
@@ -147,7 +166,7 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">set_pubexport</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">p1</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">puk</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 
         <span class="k">if</span> <span class="n">p1</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
-            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DataValidationException</span><span class="p">(</span><span class="s2">&quot;P1 must be 0 (xpub) or 1 (clear pubkey)&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DataValidationException</span><span class="p">(</span><span class="s2">"P1 must be 0 (xpub) or 1 (clear pubkey)"</span><span class="p">)</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">set_pubexport</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">puk</span><span class="p">)</span></div>
 
@@ -155,44 +174,44 @@
 <div class="viewcode-block" id="Nft.generate_random_number">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.card.html#cryptnox_sdk_py.card.nft.Nft.generate_random_number">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">generate_random_number</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Card doesn&#39;t have this functionality&quot;</span><span class="p">)</span></div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Card doesn't have this functionality"</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Nft.load_seed">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.card.html#cryptnox_sdk_py.card.nft.Nft.load_seed">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">load_seed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">pin</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Card doesn&#39;t have this functionality&quot;</span><span class="p">)</span></div>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_seed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">pin</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">""</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Card doesn't have this functionality"</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Nft.set_pin_authentication">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.card.html#cryptnox_sdk_py.card.nft.Nft.set_pin_authentication">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_pin_authentication</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">puk</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Card doesn&#39;t have this functionality&quot;</span><span class="p">)</span></div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Card doesn't have this functionality"</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Nft.set_pinless_path">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.card.html#cryptnox_sdk_py.card.nft.Nft.set_pinless_path">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_pinless_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">puk</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Card doesn&#39;t have this functionality&quot;</span><span class="p">)</span></div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Card doesn't have this functionality"</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Nft.user_key_add">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.card.html#cryptnox_sdk_py.card.nft.Nft.user_key_add">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">user_key_add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slot</span><span class="p">:</span> <span class="n">SlotIndex</span><span class="p">,</span> <span class="n">data_info</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">public_key</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">puk_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-                     <span class="n">cred_id</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Card doesn&#39;t have this functionality&quot;</span><span class="p">)</span></div>
+                     <span class="n">cred_id</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">""</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">"Card doesn't have this functionality"</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Nft.user_key_delete">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.card.html#cryptnox_sdk_py.card.nft.Nft.user_key_delete">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">user_key_delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slot</span><span class="p">:</span> <span class="n">SlotIndex</span><span class="p">,</span> <span class="n">puk_code</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Nft.user_key_info">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.card.html#cryptnox_sdk_py.card.nft.Nft.user_key_info">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">user_key_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slot</span><span class="p">:</span> <span class="n">SlotIndex</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Nft.user_key_enabled">
@@ -204,19 +223,19 @@
 <div class="viewcode-block" id="Nft.user_key_challenge_response_nonce">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.card.html#cryptnox_sdk_py.card.nft.Nft.user_key_challenge_response_nonce">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">user_key_challenge_response_nonce</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Nft.user_key_challenge_response_open">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.card.html#cryptnox_sdk_py.card.nft.Nft.user_key_challenge_response_open">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">user_key_challenge_response_open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slot</span><span class="p">:</span> <span class="n">SlotIndex</span><span class="p">,</span> <span class="n">signature</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Nft.user_key_signature_open">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.card.html#cryptnox_sdk_py.card.nft.Nft.user_key_signature_open">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">user_key_signature_open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slot</span><span class="p">:</span> <span class="n">SlotIndex</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">signature</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Nft.signature_check">
@@ -228,13 +247,13 @@
             <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">send_encrypted</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">nonce</span><span class="p">)</span>
         <span class="k">except</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">GenericException</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">error</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mh">0x69</span> <span class="ow">and</span> <span class="n">error</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mh">0x84</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DataValidationException</span><span class="p">(</span><span class="s2">&quot;Nonce has to be 16 bytes.&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DataValidationException</span><span class="p">(</span><span class="s2">"Nonce has to be 16 bytes."</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">error</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mh">0x69</span> <span class="ow">and</span> <span class="n">error</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mh">0x85</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">SeedException</span><span class="p">(</span><span class="s2">&quot;Seed not on card.&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">SeedException</span><span class="p">(</span><span class="s2">"Seed not on card."</span><span class="p">)</span>
             <span class="k">raise</span> <span class="n">error</span>
 
-        <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="sa">b</span><span class="s2">&quot;CR&quot;</span> <span class="ow">or</span> <span class="n">result</span><span class="p">[</span><span class="mi">35</span><span class="p">]</span> <span class="o">!=</span> <span class="mh">0x00</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DataException</span><span class="p">(</span><span class="s2">&quot;Result not in correct format.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="sa">b</span><span class="s2">"CR"</span> <span class="ow">or</span> <span class="n">result</span><span class="p">[</span><span class="mi">35</span><span class="p">]</span> <span class="o">!=</span> <span class="mh">0x00</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">DataException</span><span class="p">(</span><span class="s2">"Result not in correct format."</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">base</span><span class="o">.</span><span class="n">SignatureCheckResult</span><span class="p">(</span><span class="n">result</span><span class="p">[:</span><span class="mi">36</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="mi">36</span><span class="p">:])</span></div>
 
@@ -242,8 +261,8 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">_init_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pin</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">puk</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                    <span class="n">pairing_secret</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">BASIC_PAIRING_SECRET</span><span class="p">,</span> <span class="n">nfc_sign</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">Nft</span><span class="o">.</span><span class="n">_get_coded_value</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="n">Nft</span><span class="o">.</span><span class="n">_get_coded_value</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
-        <span class="n">data</span> <span class="o">+=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="s1">&#39;ascii&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">puk</span><span class="p">,</span> <span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
-        <span class="n">data</span> <span class="o">+=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&quot;5A5A&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">nfc_sign</span> <span class="k">else</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&quot;A5A5&quot;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">+=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="s1">'ascii'</span><span class="p">)</span> <span class="o">+</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">puk</span><span class="p">,</span> <span class="s1">'ascii'</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">+=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">"5A5A"</span><span class="p">)</span> <span class="k">if</span> <span class="n">nfc_sign</span> <span class="k">else</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">"A5A5"</span><span class="p">)</span>
         <span class="n">data</span> <span class="o">+=</span> <span class="n">pairing_secret</span>
 
         <span class="k">return</span> <span class="n">data</span></div>

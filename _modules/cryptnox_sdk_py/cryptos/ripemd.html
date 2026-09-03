@@ -13,7 +13,7 @@
 
   
     <link rel="shortcut icon" href="../../../_static/favicon.png"/>
-    <link rel="canonical" href="https://cryptnox.github.io/cryptnox-sdk-py/_modules/cryptnox_sdk_py/cryptos/ripemd.html" />
+    <link rel="canonical" href="https://docs.cryptnox.com/cryptnox-sdk-py/_modules/cryptnox_sdk_py/cryptos/ripemd.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../../../_static/documentation_options.js?v=2882ecd3"></script>
@@ -22,7 +22,26 @@
       <script src="../../../_static/custom.js?v=b6ee92be"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" />
+ 
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://docs.cryptnox.com/cryptnox-sdk-py/_modules/cryptnox_sdk_py/cryptos/ripemd.html" />
+<meta property="og:title" content="cryptnox_sdk_py.cryptos.ripemd | Cryptnox Docs" />
+<meta property="og:description" content="Cryptnox Python SDK — API reference for managing Cryptnox smart card hardware wallets from Python: card lifecycle, secure channel, seed and key management, and signing." />
+<meta property="og:site_name" content="Cryptnox Docs" />
+<meta property="og:image" content="https://cryptnox.com/wp-content/uploads/2026/09/cryptnox-documentation-social.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:alt" content="Cryptnox Technical Documentation" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@CryptnoxTech" />
+<meta name="twitter:title" content="cryptnox_sdk_py.cryptos.ripemd | Cryptnox Docs" />
+<meta name="twitter:description" content="Cryptnox Python SDK — API reference for managing Cryptnox smart card hardware wallets from Python: card lifecycle, secure channel, seed and key management, and signing." />
+<meta name="twitter:image" content="https://cryptnox.com/wp-content/uploads/2026/09/cryptnox-documentation-social.jpg" />
+<meta name="twitter:image:alt" content="Cryptnox Technical Documentation" />
+
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -79,12 +98,12 @@
              
   <h1>Source code for cryptnox_sdk_py.cryptos.ripemd</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="sd">Module containing RIPEMD-160 hash algorithm implementation.</span>
 
 <span class="sd">Pure Python implementation of the RIPEMD-160 cryptographic hash function.</span>
 <span class="sd">Used for generating Bitcoin addresses and other cryptographic operations.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="c1"># ripemd.py - pure Python implementation of the RIPEMD-160 algorithm.</span>
 <span class="c1"># Bjorn Edstrom &lt;be@bjrn.se&gt; 16 december 2007.</span>
 <span class="c1">##</span>
@@ -107,7 +126,7 @@
 <span class="c1"># *    notice, this list of conditions and the following disclaimer in the</span>
 <span class="c1"># *    documentation and/or other materials provided with the distribution.</span>
 <span class="c1"># *</span>
-<span class="c1"># * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS&#39;&#39; AND ANY EXPRESS OR</span>
+<span class="c1"># * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR</span>
 <span class="c1"># * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES</span>
 <span class="c1"># * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.</span>
 <span class="c1"># * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
@@ -119,7 +138,7 @@
 <span class="c1"># * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
 <span class="c1"># */</span>
 <span class="c1"># /*</span>
-<span class="c1"># * Preneel, Bosselaers, Dobbertin, &quot;The Cryptographic Hash Function RIPEMD-160&quot;,</span>
+<span class="c1"># * Preneel, Bosselaers, Dobbertin, "The Cryptographic Hash Function RIPEMD-160",</span>
 <span class="c1"># * RSA Laboratories, CryptoBytes, Volume 3, Number 2, Autumn 1997,</span>
 <span class="c1"># * ftp://ftp.rsasecurity.com/pub/cryptobytes/crypto3n2.pdf</span>
 <span class="c1"># */</span>
@@ -133,20 +152,20 @@
 <span class="n">digestsize</span> <span class="o">=</span> <span class="mi">20</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="c1"># Import Python 2&#39;s xrange for compatibility</span>
+    <span class="c1"># Import Python 2's xrange for compatibility</span>
     <span class="n">xrange_type</span> <span class="o">=</span> <span class="n">xrange</span>  <span class="c1"># type: ignore</span>
     <span class="nb">range</span> <span class="o">=</span> <span class="n">xrange_type</span>  <span class="c1"># pylint: disable=redefined-builtin</span>
 <span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
-    <span class="c1"># xrange doesn&#39;t exist in Python 3, use built-in range</span>
+    <span class="c1"># xrange doesn't exist in Python 3, use built-in range</span>
     <span class="k">pass</span>
 
 
 <div class="viewcode-block" id="RIPEMD160">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.cryptos.html#cryptnox_sdk_py.cryptos.ripemd.RIPEMD160">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">RIPEMD160</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a new RIPEMD160 object. An optional string argument</span>
+<span class="w">    </span><span class="sd">"""Return a new RIPEMD160 object. An optional string argument</span>
 <span class="sd">    may be provided; if present, this string will be automatically</span>
-<span class="sd">    hashed.&quot;&quot;&quot;</span>
+<span class="sd">    hashed."""</span>
 
 <div class="viewcode-block" id="RIPEMD160.__init__">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.cryptos.html#cryptnox_sdk_py.cryptos.ripemd.RIPEMD160.__init__">[docs]</a>
@@ -160,7 +179,7 @@
 <div class="viewcode-block" id="RIPEMD160.update">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.cryptos.html#cryptnox_sdk_py.cryptos.ripemd.RIPEMD160.update">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;update(arg)&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""update(arg)"""</span>
         <span class="n">RMD160Update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ctx</span><span class="p">,</span> <span class="n">arg</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">arg</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dig</span> <span class="o">=</span> <span class="kc">None</span></div>
 
@@ -168,7 +187,7 @@
 <div class="viewcode-block" id="RIPEMD160.digest">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.cryptos.html#cryptnox_sdk_py.cryptos.ripemd.RIPEMD160.digest">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">digest</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;digest()&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""digest()"""</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dig</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dig</span>
         <span class="n">ctx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ctx</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -180,21 +199,21 @@
 <div class="viewcode-block" id="RIPEMD160.hexdigest">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.cryptos.html#cryptnox_sdk_py.cryptos.ripemd.RIPEMD160.hexdigest">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">hexdigest</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;hexdigest()&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""hexdigest()"""</span>
         <span class="n">dig</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
-        <span class="n">hex_digest</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">hex_digest</span> <span class="o">=</span> <span class="s1">''</span>
         <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dig</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">is_python2</span><span class="p">:</span>
-                <span class="n">hex_digest</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">ord</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="si">:</span><span class="s1">02x</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">hex_digest</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="nb">ord</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="si">:</span><span class="s1">02x</span><span class="si">}</span><span class="s1">'</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">hex_digest</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">d</span><span class="si">:</span><span class="s1">02x</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="n">hex_digest</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">d</span><span class="si">:</span><span class="s1">02x</span><span class="si">}</span><span class="s1">'</span>
         <span class="k">return</span> <span class="n">hex_digest</span></div>
 
 
 <div class="viewcode-block" id="RIPEMD160.copy">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.cryptos.html#cryptnox_sdk_py.cryptos.ripemd.RIPEMD160.copy">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;copy()&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">"""copy()"""</span>
         <span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
         <span class="k">return</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 </div>
@@ -204,9 +223,9 @@
 <div class="viewcode-block" id="new">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.cryptos.html#cryptnox_sdk_py.cryptos.ripemd.new">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">new</span><span class="p">(</span><span class="n">arg</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a new RIPEMD160 object. An optional string argument</span>
+<span class="w">    </span><span class="sd">"""Return a new RIPEMD160 object. An optional string argument</span>
 <span class="sd">    may be provided; if present, this string will be automatically</span>
-<span class="sd">    hashed.&quot;&quot;&quot;</span>
+<span class="sd">    hashed."""</span>
     <span class="k">return</span> <span class="n">RIPEMD160</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span></div>
 
 
@@ -310,13 +329,13 @@
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.cryptos.html#cryptnox_sdk_py.cryptos.ripemd.RMD160Transform">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">RMD160Transform</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">block</span><span class="p">):</span>  <span class="c1"># uint32 state[5], uchar block[64]</span>
     <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">16</span>
-    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">byteorder</span> <span class="o">==</span> <span class="s1">&#39;little&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">byteorder</span> <span class="o">==</span> <span class="s1">'little'</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">is_python2</span><span class="p">:</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;&lt;16L&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">chr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">block</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">64</span><span class="p">]]))</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">'&lt;16L'</span><span class="p">,</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">chr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">block</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">64</span><span class="p">]]))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">x</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;&lt;16L&#39;</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">block</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">64</span><span class="p">]))</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">'&lt;16L'</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">block</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">64</span><span class="p">]))</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Unsupported byte order&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">"Unsupported byte order"</span><span class="p">)</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
@@ -547,22 +566,22 @@
 <div class="viewcode-block" id="RMD160Final">
 <a class="viewcode-back" href="../../../cryptnox_sdk_py.cryptos.html#cryptnox_sdk_py.cryptos.ripemd.RMD160Final">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">RMD160Final</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
-    <span class="n">size</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;&lt;Q&quot;</span><span class="p">,</span> <span class="n">ctx</span><span class="o">.</span><span class="n">count</span><span class="p">)</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">"&lt;Q"</span><span class="p">,</span> <span class="n">ctx</span><span class="o">.</span><span class="n">count</span><span class="p">)</span>
     <span class="n">padlen</span> <span class="o">=</span> <span class="mi">64</span> <span class="o">-</span> <span class="p">((</span><span class="n">ctx</span><span class="o">.</span><span class="n">count</span> <span class="o">//</span> <span class="mi">8</span><span class="p">)</span> <span class="o">%</span> <span class="mi">64</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">padlen</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="o">+</span><span class="mi">8</span><span class="p">:</span>
         <span class="n">padlen</span> <span class="o">+=</span> <span class="mi">64</span>
     <span class="n">RMD160Update</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">PADDING</span><span class="p">,</span> <span class="n">padlen</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span>
     <span class="n">RMD160Update</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;&lt;5L&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">ctx</span><span class="o">.</span><span class="n">state</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">"&lt;5L"</span><span class="p">,</span> <span class="o">*</span><span class="n">ctx</span><span class="o">.</span><span class="n">state</span><span class="p">)</span></div>
 
 
 
-<span class="k">assert</span> <span class="s1">&#39;37f332f68db77bd9d7edd4969571ad671cf9dd3b&#39;</span> <span class="o">==</span> \
-       <span class="n">new</span><span class="p">(</span><span class="s1">&#39;The quick brown fox jumps over the lazy dog&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
-<span class="k">assert</span> <span class="s1">&#39;132072df690933835eb8b6ad0b77e7b6f14acad7&#39;</span> <span class="o">==</span> \
-       <span class="n">new</span><span class="p">(</span><span class="s1">&#39;The quick brown fox jumps over the lazy cog&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
-<span class="k">assert</span> <span class="s1">&#39;9c1185a5c5e9fc54612808977ee8f548b2258d31&#39;</span> <span class="o">==</span> \
-       <span class="n">new</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+<span class="k">assert</span> <span class="s1">'37f332f68db77bd9d7edd4969571ad671cf9dd3b'</span> <span class="o">==</span> \
+       <span class="n">new</span><span class="p">(</span><span class="s1">'The quick brown fox jumps over the lazy dog'</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+<span class="k">assert</span> <span class="s1">'132072df690933835eb8b6ad0b77e7b6f14acad7'</span> <span class="o">==</span> \
+       <span class="n">new</span><span class="p">(</span><span class="s1">'The quick brown fox jumps over the lazy cog'</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+<span class="k">assert</span> <span class="s1">'9c1185a5c5e9fc54612808977ee8f548b2258d31'</span> <span class="o">==</span> \
+       <span class="n">new</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
 </pre></div>
 
            </div>
